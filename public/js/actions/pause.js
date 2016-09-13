@@ -43,7 +43,8 @@ function paused(pauseInfo) {
       [PROMISE]: (async function () {
         frames = await updateFrameLocations(getState(), frames);
 
-        dispatch(selectSource(frame.location.sourceId));
+        dispatch(selectSource(frame.location.sourceId,
+                              { line: frame.location.line }));
         return {
           pauseInfo: { why, frame },
           frames: frames,

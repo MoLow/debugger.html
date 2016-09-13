@@ -25,7 +25,7 @@ export type AsyncStatus = "start" | "done" | "error";
  */
 export type Location = {
   sourceId: string,
-  line: number,
+  line?: number,
   column?: number
 };
 
@@ -89,7 +89,8 @@ type BreakpointAction =
 type SourceAction =
   { type: "ADD_SOURCE", source: Source }
   | { type: "ADD_SOURCES", sources: Array<Source> }
-  | { type: "SELECT_SOURCE", source: Source, options: { position?: number } }
+  | { type: "SELECT_SOURCE", source: Source,
+      options: { line?: number, tabIndex?: number } }
   | { type: "SELECT_SOURCE_URL", url: string }
   | { type: "LOAD_SOURCE_TEXT",
       source: Source,
